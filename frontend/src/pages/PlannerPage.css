@@ -1,0 +1,102 @@
+/* PlannerPage.css */
+.planner-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.planner-filters {
+  width: 25%;
+  background-color: #e9d9d9;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+  flex-direction: column;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-heading {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color:#f45b31;
+  text-align: left;
+  margin-left: 100px;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin-left: 100px;
+  color:#f45b31;
+}
+
+.filter-label-text {
+  margin-right: 100px; /* Add margin between label text and input/select */
+}
+
+.filter-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  color: #eea08a;
+  border-radius: 4px;
+  width: 180px; /* Fixed width for input */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  margin-left: auto; /* 右对齐 */
+}
+
+.filter-select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  color: #eea08a;
+  border-radius: 4px;
+  width: 180px; /* Fixed width for select */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  margin-left: auto; /* 右对齐 */
+}
+
+.planner-results {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.plan-item {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.plan-item img {
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+
+.plan-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.plan-details p {
+  margin: 0 0 10px;
+}
+
+.plan-details button {
+  align-self: flex-start;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

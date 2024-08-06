@@ -1,0 +1,56 @@
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-header h2 {
+  margin: 0 5px;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar-days, .calendar-week {
+  display: flex;
+}
+
+.calendar-day, .calendar-date {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.calendar-day {
+  font-weight: bold;
+}
+
+.calendar-date.selected {
+  background-color: #007BFF;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.calendar-date.has-plan {
+  background-color: #F0AD4E; /* Adjust color for dates with plans */
+}
+
+.calendar-date.empty {
+  visibility: hidden;
+}
+

@@ -1,0 +1,22 @@
+.planner-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-column-gap: 20px; /* Gap between columns */
+  align-items: flex-start; /* Align items to start at the top */
+  margin-top: 20px;
+}
+
+.planner-calendar {
+  max-width: 100%; /* Adjust as needed */
+}
+
+.planner-itinerary {
+  max-width: 100%; /* Adjust as needed */
+}
+
+@media (max-width: 768px) {
+  .planner-container {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+}
+

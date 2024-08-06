@@ -1,0 +1,75 @@
+.plan-details-container {
+  padding: 20px;
+}
+
+.back-button {
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.plan-details-container h2,
+.plan-details-container p {
+  margin-bottom: 15px;
+}
+
+.planner-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.planner-calendar {
+  flex: 1;
+  margin-right: 20px; /* Add margin to create space between calendar and itinerary */
+}
+
+.planner-itinerary {
+  flex: 2;
+}
+
+.poi-container {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.poi-container.left {
+  background-color: #f0f0f0;
+}
+
+.poi-container.right {
+  background-color: #e0e0e0;
+}
+
+.poi-container h4 {
+  margin-bottom: 10px;
+}
+
+.poi-container h5 {
+  margin-bottom: 5px;
+}
+
+.activity-details {
+  margin-top: 10px;
+}
+
+.activity-details img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.nav-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+

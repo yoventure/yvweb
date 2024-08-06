@@ -1,0 +1,62 @@
+/* Header.css */
+.header {
+  background-color: #fff1de;
+  border-bottom: 1px solid #eaeaea;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left, .nav-right {
+  color: #f45b31;
+  display: flex;
+  align-items: center;
+}
+
+.nav-left .brand {
+  color: #f45b31;
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 140px;
+}
+
+.nav-left a {
+  margin-right: 80px;
+  text-decoration: none;
+  color: #f45b31;
+}
+
+.nav-right .button {
+  padding: 8px 16px;
+  margin-left: 15px;
+  border: 1px solid #f45b31;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #f45b31;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-right .button:hover {
+  background-color:#f45b31;
+  color: #fff;
+}
+
+.nav-right .button.primary {
+  background-color: #f45b31;
+  color: #fff;
+  border: none;
+}
+
+.nav-right .button.primary:hover {
+  background-color: #f45b31;
+}

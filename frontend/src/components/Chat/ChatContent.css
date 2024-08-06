@@ -1,0 +1,33 @@
+.chat-content {
+  padding: 10px;
+  overflow-y: auto;
+  height: 400px; /* Adjust height as needed */
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.chat-message.user {
+  background-color: #d1e7dd;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.chat-message.system {
+  background-color: #f8d7da;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.message-text {
+  margin-bottom: 5px;
+}
+
+.message-date {
+  font-size: 0.8em;
+  color: gray;
+}

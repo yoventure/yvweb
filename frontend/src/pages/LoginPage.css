@@ -1,0 +1,32 @@
+.login-page {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login-page div {
+  margin-bottom: 1rem;
+}
+
+.login-page label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.login-page input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login-page button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
