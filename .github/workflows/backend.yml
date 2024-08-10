@@ -9,6 +9,8 @@ on:
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # Ensure this is set if you are using Azure login with id-token
 
     steps:
     - name: Checkout code
