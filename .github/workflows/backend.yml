@@ -42,16 +42,6 @@ jobs:
         cd backend
         cp .env.production .env  # Copy the environment file
     
-    - name: Run server.js
-      run: |
-        cd backend
-        npm start  # Or `node server.js` if npm start is not set
-
-    - name: Run database setup script
-      run: |
-        cd backend
-        python database/signup_db.py
-
     - name: Azure Login
       uses: azure/login@v2
       with:
@@ -59,6 +49,16 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         enable-oidc: true  # 启用OIDC身份验证
+
+    - name: Start Node.js server
+      run: |
+        cd backend
+        nohup node server.js &  # 使用 nohup 和 & 启动 Node.js 服务器并将其放在后台运行
+
+    - name: Run Python script
+      run: |
+        cd database
+        python signup_db.py
 
     - name: Build and Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
