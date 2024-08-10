@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useUser } from '../UserContext'; // 引入 useUser
 import ChatContent from '../components/Chat/ChatContent';
 import ChatInput from '../components/Chat/ChatInput';
@@ -14,11 +14,7 @@ function ChatPage() {
   const userId = user?.userId; // 获取 userId
   const password = user?.password; // 获取 userPassword
   
-  useEffect(() => {
-    fetchSessions();
-  }, [userId, password]);
-
-    const fetchSessions = async () => {
+    const fetchSessions = useCallback(async () => {
       try {
         console.log('user_id', user);
         console.log('password', user?.password);
@@ -54,7 +50,12 @@ function ChatPage() {
       } catch (error) {
         console.error('Error fetching sessions:', error);
       }
-    };
+    }, [userId, password, user]);
+
+  useEffect(() => {
+      fetchSessions();
+  }, [fetchSessions]);
+  
 
   const selectSession = async (session) => {
     setCurrentSession(session);
