@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify
 import pymongo
 from pymongo.errors import ConnectionFailure
 import bcrypt
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -75,5 +79,5 @@ def find_user():
         client.close()
         return jsonify({"success": False, "message": "User not found"})
 
-if __name__ == "__main__":
-    app.run(port=5002)
+# if __name__ == "__main__":
+#     app.run(port=5002)

@@ -26,6 +26,11 @@ jobs:
         cd backend/database
         pip install -r requirements.txt
 
+    - name: Copy production environment variables
+      run: |
+        cd backend
+        cp .env.production .env  # Copy the environment file
+
     - name: Azure Login
       uses: azure/login@v2
       with:
