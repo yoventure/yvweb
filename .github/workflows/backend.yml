@@ -30,10 +30,15 @@ jobs:
         npm install
         pip install -r database/requirements.txt
 
-    - name: Copy production environment variables
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    - name: List files in backend directory for debugging
       run: |
-        cp .env.production .env  # Path is correct if `.env.production` is in `backend` directory
+        cd backend
+        ls -la  # List files to verify the presence of `.env.production`
+
+    - name: Copy production environment variables
+      run: |
+        cd backend
+        cp .env.production .env  # Copy the environment file
 
     - name: Build and Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
