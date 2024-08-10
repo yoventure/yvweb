@@ -27,8 +27,8 @@ jobs:
     - name: Copy production environment variables and config
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: |
-        cp frontend/.env.production frontend/.env
-        cp frontend/config.production.json frontend/config.json
+        cp frontend/src/.env.production frontend/src/.env
+        cp frontend/src/config.production.json frontend/src/config.json
 
     - name: Azure Login
       uses: azure/login@v2
