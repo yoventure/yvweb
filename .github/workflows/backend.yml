@@ -40,6 +40,11 @@ jobs:
         cd backend
         cp .env.production .env  # Copy the environment file
 
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: Build and Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
