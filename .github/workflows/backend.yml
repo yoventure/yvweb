@@ -50,16 +50,6 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         enable-oidc: true  # 启用OIDC身份验证
 
-    - name: Start Node.js server
-      run: |
-        cd backend
-        nohup node server.js &  # 使用 nohup 和 & 启动 Node.js 服务器并将其放在后台运行
-
-    - name: Run Python script
-      run: |
-        cd database
-        python database/signup_db.py
-
     - name: Build and Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
