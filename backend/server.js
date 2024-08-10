@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -8,7 +10,7 @@ const bodyParser = require('body-parser');
 const db = require('./config/db');  // Ensure correct path to db.js
 const bcrypt = require('bcryptjs');
 const app = express();
-const port = 5001;
+const port = process.env.PORT || 5001;
 
 
 
@@ -94,7 +96,7 @@ app.post('/api/signup', async (req, res) => {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);  // 10 是 salt 的轮数
 
-    const response = await axios.post('http://localhost:5002/insert', {
+    const response = await axios.post(`${process.env.API_URL}/insert`, {
       name,
       user_id: email,
       phone,
@@ -113,7 +115,7 @@ app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const response = await axios.post('http://localhost:5002/find_user', { email });
+    const response = await axios.post(`${process.env.API_URL}/find_user`, { email });
 
     if (!response.data.success) {
       return res.status(404).json({ success: false, message: "User not found" });

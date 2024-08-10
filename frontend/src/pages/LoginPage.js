@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../UserContext'; // 引入 useUser
 import './LoginPage.css';
 const bcrypt = require('bcryptjs'); // 引入 bcryptjs 库
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function LoginPage({ setIsLoggedIn, setUserSessions }) { // Destructure the prop correctly
   const [email, setEmail] = useState('');
@@ -12,8 +13,9 @@ function LoginPage({ setIsLoggedIn, setUserSessions }) { // Destructure the prop
   const { setUser } = useUser(); // 获取 setUser 函数
 
   const handleLogin = async () => {
+    console.log('api-pre',apiUrl)
     try {
-      const response = await fetch('http://localhost:5001/api/login', {
+      const response = await fetch(`${apiUrl}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

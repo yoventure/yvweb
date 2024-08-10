@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './SignupPage.css';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function SignupPage() {
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ function SignupPage() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5001/api/send-verification', formData);
+      const response = await axios.post(`${apiUrl}/send-verification`, formData);
       if (response.data.success) {
         alert('Verification code sent to your email.');
       } else {
@@ -47,14 +48,14 @@ function SignupPage() {
 
   const handleVerify = async () => {
     try {
-      const response = await axios.post('http://localhost:5001/api/verify-code', {
+      const response = await axios.post(`${apiUrl}/verify-code`, {
         email: formData.email,
         code: verificationCode,
       });
       console.log('user_id', formData.email)
       if (response.data.success) {
         setIsVerified(true);
-        const signupResponse = await axios.post('http://localhost:5001/api/signup', formData);
+        const signupResponse = await axios.post(`${apiUrl}/signup`, formData);
         if (signupResponse.data.success) {
           const session_response = await fetch('/yv-new-session', {
             method: 'POST',
