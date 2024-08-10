@@ -41,6 +41,16 @@ jobs:
       run: |
         cd backend
         cp .env.production .env  # Copy the environment file
+    
+    - name: Run server.js
+      run: |
+        cd backend
+        npm start  # Or `node server.js` if npm start is not set
+
+    - name: Run database setup script
+      run: |
+        cd backend
+        python database/signup_db.py
 
     - name: Azure Login
       uses: azure/login@v2
