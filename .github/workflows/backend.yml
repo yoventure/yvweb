@@ -33,7 +33,7 @@ jobs:
     - name: Copy production environment variables
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: |
-        cp .env.production .env
+        cp .env.production .env  # Path is correct if `.env.production` is in `backend` directory
 
     - name: Build and Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
