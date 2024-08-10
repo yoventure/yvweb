@@ -31,7 +31,7 @@ jobs:
         pip install -r database/requirements.txt
 
     - name: Copy production environment variables
-      if: env.NODE_ENV == 'production'
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: |
         cp .env.production .env
 

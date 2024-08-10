@@ -25,16 +25,10 @@ jobs:
         npm install
 
     - name: Copy production environment variables and config
-      if: env.NODE_ENV == 'production'
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: |
         cp .env.production .env
         cp config.production.json config.json
-
-    - name: Copy local environment variables and config
-      if: env.NODE_ENV != 'production'
-      run: |
-        cp .env .env.local
-        cp config.local.json config.json
 
     - name: Build frontend
       run: |
