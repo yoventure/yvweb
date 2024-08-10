@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../UserContext'; // 引入 useUser
 import './LoginPage.css';
-const bcrypt = require('bcryptjs'); // 引入 bcryptjs 库
+// const bcrypt = require('bcryptjs'); // 引入 bcryptjs 库
 const apiUrl = process.env.REACT_APP_API_URL;
 
 function LoginPage({ setIsLoggedIn, setUserSessions }) { // Destructure the prop correctly
@@ -26,10 +26,10 @@ function LoginPage({ setIsLoggedIn, setUserSessions }) { // Destructure the prop
       if (response.ok) {
         setIsLoggedIn(true); // Set the login state to true upon successful login
         setUser({ userId: email,password: password  }); // 存储用户信息
-        console.log('user_id',email)
-        console.log('password',password)
-        const hashedPassword = bcrypt.hashSync(password, 10); // 10 是 saltRounds，用于生成 salt
-        console.log('password',hashedPassword)
+        // console.log('user_id',email)
+        // console.log('password',password)
+        // const hashedPassword = bcrypt.hashSync(password, 10); // 10 是 saltRounds，用于生成 salt
+        // console.log('password',hashedPassword)
         const sessionResponse = await fetch('/yv-get-user-sessions', {
           method: 'POST',
           headers: {
