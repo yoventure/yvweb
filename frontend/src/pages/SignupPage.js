@@ -46,6 +46,11 @@ function SignupPage() {
     }
   };
 
+  const handleResendCode = () => {
+    setResendCount(resendCount + 1);
+    handleSignup();
+  };
+
   const handleVerify = async () => {
     try {
       const response = await axios.post(`${apiUrl}/verify-code`, {
@@ -153,7 +158,7 @@ function SignupPage() {
             <button onClick={handleSignup} className="send-verification-button">Send Code</button>
           </div>
           {resendCount > 0 && (
-            <button onClick={handleSignup} className="resend-code-button">Resend Code</button>
+            <button onClick={handleResendCode} className="resend-code-button">Resend Code</button>
           )}
           {isVerified ? (
             <div>

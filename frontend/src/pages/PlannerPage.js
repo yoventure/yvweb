@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PlannerPage.css';
-import PlannerCalendar from '../components/Planner/PlannerCalendar';
+// import PlannerCalendar from '../components/Planner/PlannerCalendar';
 import PlannerDetails from '../components/Planner/PlannerDetails'; // Assuming your PlannerDetails component is in a separate file
 
 function PlannerPage() {

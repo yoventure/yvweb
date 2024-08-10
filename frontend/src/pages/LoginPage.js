@@ -40,11 +40,11 @@ function LoginPage({ setIsLoggedIn, setUserSessions }) { // Destructure the prop
             "password": password,
             "passwordcheck": 1})
         });
-        // if (sessionResponse.data.status === 'success') {
-        //   setUserSessions(sessionResponse.data.sessions);
-        // } else {
-        //   alert('Failed to get user sessions');
-        // }
+        if (sessionResponse.data.status === 'success') {
+          setUserSessions(sessionResponse.data.sessions);
+        } else {
+          alert('Failed to get user sessions');
+        }
         navigate('/');
 
       } else {

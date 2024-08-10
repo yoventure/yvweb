@@ -30,7 +30,7 @@ function PlannerCalendar({ year, month, plans, selectedDate, onDateClick }) {
       if (i === 0 && j < startDayOfMonth) {
         week.push(<div key={`empty-${j}`} className="calendar-date empty"></div>);
       } else if (dayCounter <= daysInMonth) {
-        const date = new Date(year, monthIndex, dayCounter);
+        // const date = new Date(year, monthIndex, dayCounter);
         const hasPlan = plans && plans.some(plan => plan.dates.includes(dayCounter)); // Ensure plans is defined
 
         week.push(

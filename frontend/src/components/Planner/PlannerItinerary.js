@@ -35,11 +35,11 @@ function POIContainer({ poi , index, total}) {
 
   const currentActivity = poi.activities[currentActivityIndex];
 
-  const positionStyles = {
-    position: 'absolute',
-    top: `${index * 300}px`, // Adjust as needed for spacing
-    left: `${index % 2 === 0 ? 0 : 500}px`, // Adjust for alternating left and right positions
-  };
+  // const positionStyles = {
+  //   position: 'absolute',
+  //   top: `${index * 300}px`, // Adjust as needed for spacing
+  //   left: `${index % 2 === 0 ? 0 : 500}px`, // Adjust for alternating left and right positions
+  // };
 
 
   return (

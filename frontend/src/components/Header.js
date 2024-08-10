@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header({ isLoggedIn, handleLogout }) {
-  
-  const navigate = useNavigate();
 
   return (
       <header className='header'>
