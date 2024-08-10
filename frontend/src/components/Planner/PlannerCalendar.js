@@ -24,6 +24,20 @@ function PlannerCalendar({ year, month, plans, selectedDate, onDateClick }) {
   const calendarDates = [];
   let dayCounter = 1;
 
+  // Function to create the calendar date elements
+  const createCalendarDate = (day) => {
+    const hasPlan = plans && plans.some(plan => plan.dates.includes(day)); // Ensure plans is defined
+    return (
+      <div
+        key={day}
+        className={`calendar-date ${selectedDate === day ? 'selected' : ''} ${hasPlan ? 'has-plan' : ''}`}
+        onClick={() => onDateClick(day)}
+      >
+        {day}
+      </div>
+    );
+  };
+
   for (let i = 0; i < 6; i++) {
     const week = [];
     for (let j = 0; j < 7; j++) {
@@ -31,19 +45,9 @@ function PlannerCalendar({ year, month, plans, selectedDate, onDateClick }) {
         week.push(<div key={`empty-${j}`} className="calendar-date empty"></div>);
       } else if (dayCounter <= daysInMonth) {
         // const date = new Date(year, monthIndex, dayCounter);
-        const hasPlan = plans && plans.some(plan => plan.dates.includes(dayCounter)); // Ensure plans is defined
-
-        week.push(
-          <div
-            key={dayCounter}
-            className={`calendar-date ${selectedDate === dayCounter ? 'selected' : ''} ${hasPlan ? 'has-plan' : ''}`}
-            onClick={() => onDateClick(dayCounter)}
-          >
-            {dayCounter}
-          </div>
-        );
+        week.push(createCalendarDate(dayCounter));
         dayCounter++;
-      } else {
+      }else{
         week.push(<div key={`empty-${i * 7 + j}`} className="calendar-date empty"></div>);
       }
     }
