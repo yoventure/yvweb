@@ -58,7 +58,7 @@ jobs:
     - name: Run Python script
       run: |
         cd database
-        python signup_db.py
+        python database/signup_db.py
 
     - name: Build and Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
