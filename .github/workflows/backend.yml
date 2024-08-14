@@ -50,7 +50,7 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         enable-oidc: true  # 启用OIDC身份验证
 
-    - name: Build and Deploy to Azure Web App
+    - name: Build and Deploy to Azure Web App backend
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'yvweb-backend'
