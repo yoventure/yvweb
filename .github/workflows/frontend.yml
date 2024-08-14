@@ -51,4 +51,4 @@ jobs:
         app-name: 'yvweb-frontend'
         slot-name: 'production'
         publish-profile: ${{ secrets.AZURE_WEBAPP_FRONTEND_PUBLISH_PROFILE }}
-        package: './frontend/build'
+        package: './frontend'
