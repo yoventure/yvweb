@@ -46,7 +46,7 @@ jobs:
         npm run build
 
     - name: Deploy to Azure Web App frontend
-      uses: azure/webapps-deploy@v3
+      uses: azure/webapps-deploy@v2
       with:
         app-name: 'yvweb-frontend'
         slot-name: 'production'
