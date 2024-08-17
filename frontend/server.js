@@ -1,16 +1,22 @@
-const express = require('express');
-const path = require('path');
+var express = require('express');
+var path = require('path');
+var app = express();
 
-const app = express();
+// Serve static files from the 'wwwroot' directory
+var buildPath = path.join(__dirname, 'wwwroot');
+console.log('Serving static files from:', buildPath);
 
-// Serve static files from the "build" directory
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(buildPath));
 
-// Serve the index.html file for the root route
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', '/build/index.html'));
+// Serve index.html for all routes
+app.get('*', (req, res) => {
+  console.log('Handling request for:', req.url);
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+var server = app.listen(process.env.PORT || 8080, () => {
+  console.log('Server is listening on port', process.env.PORT || 8080);
+});
+
+// Must be longer than local proxy keep-alive timeout
+server.keepAliveTimeout = (65 * 1000);
