@@ -2,7 +2,7 @@
   "name": "yoventure-webapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "/wwwroot/",
   "proxy": "https://yvuserchat.azurewebsites.net",
   "dependencies": {
     "axios": "^0.24.0",
