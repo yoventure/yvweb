@@ -15,7 +15,7 @@
     "react-scripts": "^5.0.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development react-scripts start",
+    "start": "node server.js",
     "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
