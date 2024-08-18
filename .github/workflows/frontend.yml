@@ -41,7 +41,7 @@ jobs:
     - name: Build frontend
       run: |
         cd frontend
-        NODE_ENV=production npm run build
+        npm run build
 
     - name: Deploy to Azure Web App frontend
       uses: azure/webapps-deploy@v2
