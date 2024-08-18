@@ -1,5 +1,11 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
+
+// Load environment variables from .env or .env.production
+const env = process.env.NODE_ENV || 'development';
+dotenv.config({ path: `.env.${env}` });
+
 const app = express();
 const port = process.env.PORT || 8080;
 
