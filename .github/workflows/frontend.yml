@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies for frontend
       run: |
         cd frontend
-        npm install
+        npm ci  
 
     - name: Copy production environment variables and config
       run: |
@@ -41,13 +41,12 @@ jobs:
     - name: Build frontend
       run: |
         cd frontend
-        npm run build
+        NODE_ENV=production npm run build
 
     - name: Deploy to Azure Web App frontend
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'yvweb-frontend'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AZURE_WEBAPP_FRONTEND_PUBLISH_PROFILE }}
         package: './frontend/build'  # Deploy the whole frontend directory, not just the build folder
-
+        publish-profile: ${{ secrets.AZURE_WEBAPP_FRONTEND_PUBLISH_PROFILE }}
