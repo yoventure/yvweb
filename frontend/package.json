@@ -18,6 +18,7 @@
   "scripts": {
     "start": "npx serve -s build",
     "build": "react-scripts build",
+    "postbuild": "npm install serve",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
