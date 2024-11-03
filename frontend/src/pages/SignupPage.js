@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import config from '../config'; // 引入 config.js
 import './SignupPage.css';
-const apiUrl = process.env.REACT_APP_API_URL;
+
+const Url = config.apiUrl;
 
 function SignupPage() {
   const [formData, setFormData] = useState({
@@ -9,7 +10,9 @@ function SignupPage() {
     email: '',
     phone: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    gender: '',
+    date_of_birth: '' // 假设格式为 YYYY-MM-DD
   });
 
   const [verificationCode, setVerificationCode] = useState('');
@@ -22,19 +25,73 @@ function SignupPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleSignupNew = async () => {
+    if (formData.password !== formData.confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+  
+    // if (!validatePassword(formData.password)) {
+    //   alert('Password does not meet the requirements');
+    //   return;
+    // }
+
+    console.log(Url)
+  
+    try {
+
+      console.log(JSON.stringify({
+        name: formData.name,
+        user_id: formData.email,  // 使用表单中填写的 email 作为 user_id
+        phone: formData.phone,
+        password: formData.password,
+        gender: '',
+        date_of_birth: "2024-10-19",
+      }))
+
+      const response = await fetch('/yv-signup', 
+        {method: 'POST',
+         headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          user_id: formData.email,  // 使用表单中填写的 email 作为 user_id
+          phone: formData.phone,
+          password: formData.password,
+          gender: "",
+          date_of_birth:  "2024-10-19",
+        }),
+      });
+
+      console.log(response)
+  
+      if (response.ok) {
+        alert('Signup successful! You can now log in.');
+        setSignupComplete(true);
+      } else {
+        alert('Signup failed: ' + response.data.message);
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      alert('Signup failed. Please try again.');
+    }
+  };
+
   const handleSignup = async () => {
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
 
-    if (!validatePassword(formData.password)) {
-      alert('Password does not meet the requirements');
-      return;
-    }
+    // if (!validatePassword(formData.password)) {
+    //   alert('Password does not meet the requirements');
+    //   return;
+    // }
 
     try {
-      const response = await axios.post(`${apiUrl}/send-verification`, formData);
+      const response = await fetch(`${Url}/send-verification`, formData);
       if (response.data.success) {
         alert('Verification code sent to your email.');
       } else {
@@ -53,14 +110,14 @@ function SignupPage() {
 
   const handleVerify = async () => {
     try {
-      const response = await axios.post(`${apiUrl}/verify-code`, {
+      const response = await fetch(`${Url}/verify-code`, {
         email: formData.email,
         code: verificationCode,
       });
       console.log('user_id', formData.email)
       if (response.data.success) {
         setIsVerified(true);
-        const signupResponse = await axios.post(`${apiUrl}/signup`, formData);
+        const signupResponse = await fetch(`${Url}/signup`, formData);
         if (signupResponse.data.success) {
           const session_response = await fetch('/yv-new-session', {
             method: 'POST',
@@ -87,10 +144,10 @@ function SignupPage() {
     }
   };
 
-  const validatePassword = (password) => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    return passwordRegex.test(password);
-  };
+  // const validatePassword = (password) => {
+  //   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  //   return passwordRegex.test(password);
+  // };
 
   return (
     <div className="signup-container">
@@ -147,7 +204,7 @@ function SignupPage() {
             />
             <label htmlFor="show-password" className="show-password-label">Show Password</label>
           </div>
-          <div className="verification-container">
+          {/* <div className="verification-container">
             <input
               type="text"
               placeholder="Verification Code"
@@ -156,17 +213,18 @@ function SignupPage() {
               className="verification-input"
             />
             <button onClick={handleSignup} className="send-verification-button">Send Code</button>
-          </div>
-          {resendCount > 0 && (
+          </div> */}
+          {/* {resendCount > 0 && (
             <button onClick={handleResendCode} className="resend-code-button">Resend Code</button>
-          )}
-          {isVerified ? (
+          )} */}
+          {/* {isVerified ? (
             <div>
               <p>Signup successful!</p>
             </div>
           ) : (
             <button onClick={handleVerify} className="signup-button">Verify</button>
-          )}
+          )} */}
+          <button onClick={handleSignupNew} className="signup-button">SignUp</button>
         </div>
       ) : (
         <div>

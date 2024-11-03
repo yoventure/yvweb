@@ -1,16 +1,19 @@
 /* Header.css */
 .header {
   background-color: #fff1de;
-  border-bottom: 1px solid #eaeaea;
-  padding: 10px 20px;
-  display: flex;
+  display: block;
+  box-sizing: border-box;
+  border: 0 solid #fff1de;
   justify-content: space-between;
+  height: 40px;
+  margin: 0;
+  padding: 3px;
+  border: 0;
   align-items: center;
 }
 
 .nav {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
 }
@@ -19,6 +22,13 @@
   color: #f45b31;
   display: flex;
   align-items: center;
+}
+.nav-left{
+  margin-left: 20px;
+}
+
+.nav-right{
+  margin-right: 10px;
 }
 
 .nav-left .brand {

@@ -1,0 +1,100 @@
+.member-container {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 2px;
+  }
+
+#member-list-title {
+    font-size: 26px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    color: #f45b31;
+    font-family:'Courier New', Courier, monospace;
+    line-height: 34px;
+}
+
+#member-list-pinned-title{
+    font-size: 16px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    color:#858585;
+    font-family: "Red Hat Display";
+    line-height: 21px;
+}
+
+#member-list-all-messages{
+    font-size: 16px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    color:#858585;
+    font-family: "Red Hat Display";
+    line-height: 21px;
+}
+
+.member-list-header {
+    display: flex; /* Use flexbox layout */
+    justify-content: space-between; /* Space items between the ends */
+    align-items: center; /* Center items vertically */
+    padding: 1px; /* Optional: Add some padding */
+}
+
+#member-list-online,
+#member-list-see-all {
+    font-size: 13px;
+    margin-right: 13px; /* Remove margin left and right */
+    margin-left: 10px; /* Remove margin left and right */
+    margin-top: 3px;
+    margin-bottom: 0px;
+    color: #858585;
+    font-family: "Roboto";
+    line-height: 21px;
+}
+  
+  h2 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  .online-members {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  
+  .member {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+    position: relative;
+  }
+  
+  .member-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .pinned-messages,
+  .all-messages {
+    margin-bottom: 10px;
+  }
+  
+  .pinned-message,
+  .message {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    margin-bottom: 5px;
+  }
+  
+  .message-time {
+    font-size: 0.8em;
+    color: #777;
+    margin-left: 10px;
+  }
+  

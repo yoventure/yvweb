@@ -1,0 +1,177 @@
+/* CSS Variables */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #eea08a;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+    --button-padding: 0.5em 1em;
+    --font-size-base: 16px;
+    --modal-max-width: 500px;
+    --modal-padding: 20px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: var(--modal-max-width);
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: var(--modal-padding);
+    z-index: 1000;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.modal.active {
+    display: block;
+}
+
+/* Overlay Styles */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+/* Tab Navigation */
+[role="tablist"] {
+    display: flex;
+    justify-content: space-around; /* Center tabs horizontally */
+    margin-bottom: 1em;
+}
+
+[role="tab"] {
+    padding: 0.5em 1em;
+    background-color: var(--background-color);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+[role="tab"][aria-selected="true"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid var(--primary-color);
+}
+
+[role="tab"]:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none; /* Hide by default */
+}
+
+.tab-content.active {
+    display: block; /* Show active tab content */
+}
+
+/* Calendar Container */
+.calendar-container {
+    margin: 1em 0;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    text-align: center;
+}
+
+.day-button {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.day-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Button Styles */
+.update-button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: var(--button-padding);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.update-button:hover {
+    background-color: #27ae60; /* Darken color for hover */
+}
+
+/* Date Input Styles */
+input[type="date"], input[type="number"] {
+    padding: 0.5em;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 100%;
+    font-size: var(--font-size-base);
+    margin-bottom: 1em;
+}
+
+input[type="date"]:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .calendar-grid {
+        grid-template-columns: repeat(3, 1fr); /* Smaller grid for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-grid {
+        grid-template-columns: repeat(2, 1fr); /* Further reduce grid for very small screens */
+    }
+
+    [role="tablist"] {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

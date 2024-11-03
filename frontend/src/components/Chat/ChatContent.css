@@ -1,11 +1,14 @@
 .chat-content {
-  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 100%; /* Full height of the right-side container */
+  display: flex;
+  flex-direction: column; /* Ensure vertical stacking */
   overflow-y: auto;
-  height: 400px; /* Adjust height as needed */
 }
 
 .chat-message {
-  margin-bottom: 10px;
   padding: 10px;
   border-radius: 10px;
   max-width: 70%;
@@ -13,14 +16,70 @@
 
 .chat-message.user {
   background-color: #d1e7dd;
+  margin-top: 2px;
+  margin-right: 3px;
   align-self: flex-end;
   text-align: right;
 }
 
 .chat-message.system {
   background-color: #f8d7da;
+  margin-top: 2px;
+  margin-left: 3px;
   align-self: flex-start;
   text-align: left;
+}
+
+.impression-card {
+  margin-left: 3px;
+  margin-top: 3px;
+  margin-bottom: 0px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-height: 300px; /* 固定高度 */
+  max-width: 200px; /* 固定高度 */
+  overflow-y: auto;
+  width: 100%; /* 确保容器适应聊天框的宽度 */
+}
+
+.impression-card-slider {
+  display: flex;
+  overflow-x: auto;  /* 横向滚动 */
+  scroll-snap-type: x mandatory;
+  max-width: 100%;
+  height: 200px; /* 固定高度 */
+}
+
+.impression-card-slider img {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scroll-snap-align: start;
+  margin-right: 10px; /* 图片之间的间距 */
+}
+
+.impression-card h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.impression-card img {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.impression-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
 }
 
 .message-text {

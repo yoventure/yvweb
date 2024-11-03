@@ -1,8 +1,10 @@
 .chat-list-container {
-  padding: 10px;
+  padding: 1px;
   border-right: 1px solid #ccc;
-  overflow-y: auto;
-  height: 400px; /* Adjust height as needed */
+  overflow-y: scroll;
+  height: 100hv;
+  display: flex;
+  flex-direction: column;
 }
 
 .new-chat-button {
@@ -10,7 +12,7 @@
   padding: 10px;
   margin-bottom: 10px;
   border: none;
-  background-color: #007bff;
+  background-color: #eea08a;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -26,8 +28,13 @@
   cursor: pointer;
 }
 
+.chat-item.active {
+  background-color: #f5dede; /* 高亮背景色 */
+  font-weight: bold;
+}
+
 .chat-item:hover {
-  background-color: #f1f1f1;
+  background-color: #f1b6b6;
 }
 
 .text {

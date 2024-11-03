@@ -1,9 +1,254 @@
 .home-container {
-    padding: 20px;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
   }
   
   .home-container h1 {
     font-size: 2em;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
-  
+
+  #bg {
+    width: 100%;
+    height: 1000px;
+    background-image: url("../../public/IMG_3859.JPG");
+    background-size: cover; /* 让图像充满整个元素 */
+  }
+
+  #p1 {
+    color: #f45b31;
+    font-size: 68px;
+    float: left;
+    position: absolute;
+    left: 100px;
+    top: 300px;
+  }
+
+  #p2 {
+    color: #ebda59;
+    font-size: 40px;
+    float: left;
+    left: 110px;
+    top: 400px;
+    position: absolute;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  #p2.repeat {
+    animation: typing 4s steps(30, end) infinite, blink .75s step-end infinite;
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+#HW {
+  text-align: center;
+  position: relative;
+  font-size: 45px;
+}
+
+#HW-Chat {
+  align-self: center;
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+#HW-Chat-Assistant-h2 {
+  background-color: white;
+  padding: 120px 10px 0px 400px;
+  margin: 40px 40px 0px 40px;
+  width: 400px;
+  position: relative;
+  font-size: 40px;
+}
+
+#HW-Chat-Assistant-p {
+  background-color: white;
+  padding: 0px 10px 10px 400px;
+  margin: 0px 40px 40px 40px;
+  position: relative;
+  font-size: 20px;
+  width: 400px;
+}
+
+#HW-Chat-Assistant-image {
+  position: relative;
+  display: flex;
+  left: 1000px;
+  top: -260px;
+  width: 350px; /* 设置适当的宽度 */
+  height: 500px; /* 设置适当的高度 */
+  background-image: url("../../public/HW_Chat_Assistant.gif");
+  background-size: cover; /* 使背景图片充满整个区域 */
+  background-repeat: no-repeat; /* 防止图片重复 */
+  background-position: center; /* 图片居中显示 */
+}
+
+
+#HW-Match-Assistant-image {
+  position: relative;
+  display: flex;
+  left: 450px;
+  top: 300px;
+  width: 350px; /* 设置适当的宽度 */
+  height: 500px; /* 设置适当的高度 */
+  background-image: url("../../public/HW_Match_Assistant.gif");
+  background-size: cover; /* 使背景图片充满整个区域 */
+  background-repeat: no-repeat; /* 防止图片重复 */
+  background-position: center; /* 图片居中显示 */
+}
+
+#HW-Match-Assistant-h2 {
+  background-color: white;
+  padding: 0px 10px 0px 0px;
+  margin: 0px 40px 0px 0px;
+  width: 400px;
+  left: 980px;
+  position: relative;
+  font-size: 40px;
+}
+
+#HW-Match-Assistant-p {
+  background-color: white;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  left: 980px;
+  position: relative;
+  font-size: 20px;
+  width: 400px;
+}
+
+#HW-Pitfall-Assistant-h2 {
+  background-color: white;
+  padding: 0px 10px 0px 0px;
+  margin: 500px 40px 0px 0px;
+  width: 400px;
+  left: 450px;
+  position: relative;
+  font-size: 40px;
+}
+
+#HW-Pitfall-Assistant-p {
+  background-color: white;
+  padding: 0px 10px 0px 0px;
+  margin: 0px 40px 0px 0px;
+  width: 400px;
+  left: 450px;
+  position: relative;
+  font-size: 20px;
+  width: 400px;
+}
+
+
+#HW-Pitfall-Assistant-image {
+  position: relative;
+  display: flex;
+  left: 1000px;
+  top: -260px;
+  width: 380px; /* 设置适当的宽度 */
+  height: 500px; /* 设置适当的高度 */
+  background-image: url("../../public/HW_Pitfall_Assistant.gif");
+  background-size: cover; /* 使背景图片充满整个区域 */
+  background-repeat: no-repeat; /* 防止图片重复 */
+  background-position: center; /* 图片居中显示 */
+}
+
+#HW-Explorer-Assistant-image {
+  position: relative;
+  display: flex;
+  left: 450px;
+  top: -180px;
+  width: 350px; /* 设置适当的宽度 */
+  height: 500px; /* 设置适当的高度 */
+  background-image: url("../../public/HW_Explorer_Assistant.gif");
+  background-size: cover; /* 使背景图片充满整个区域 */
+  background-repeat: no-repeat; /* 防止图片重复 */
+  background-position: center; /* 图片居中显示 */
+}
+
+#HW-Explorer-Assistant-h2 {
+  background-color: white;
+  padding: 0px 10px 0px 0px;
+  margin: -500px 40px 0px 0px;
+  width: 400px;
+  left: 980px;
+  position: relative;
+  font-size: 40px;
+}
+
+#HW-Explorer-Assistant-p {
+  background-color: white;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  left: 980px;
+  position: relative;
+  font-size: 20px;
+  width: 400px;
+}
+
+.footer-container {
+  background-color: rgb(241, 239, 239);
+  box-sizing: border-box;
+  width: 100%;
+  height: 400px;
+  top: 280px;
+  position: relative;
+}
+
+.footer-content {
+  padding: 6rem;
+}
+
+.footer-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.5rem;
+  display: grid;
+}
+
+.footer-grid-col1{
+  grid-column: span 2 / span 2;
+}
+
+li {
+  display: list-item;
+  unicode-bidi: isolate;
+}
+
+.footer-grid-col2-link {
+  list-style: none;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  width: 190px
+}
+
+.footer-grid-col3-link {
+  list-style: none;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  width: 100px
+}

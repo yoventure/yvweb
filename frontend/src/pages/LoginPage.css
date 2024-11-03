@@ -1,9 +1,15 @@
 .login-page {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1rem;
+  margin-top: 100px;
+  margin-left: 700px;
+  margin-right: 700px;
+  padding: 10px;
   border: 1px solid #ddd;
+  width: 500px;
   border-radius: 4px;
+}
+
+.login-page h2{
+  margin-top: 5px;
 }
 
 .login-page div {
@@ -16,14 +22,17 @@
 }
 
 .login-page input {
-  width: 100%;
+  margin-top: 1px;
+  margin-left: 1px;
+  margin-right: 1px;
   padding: 0.5rem;
+  width: 95%;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
 .login-page button {
-  background-color: #007bff;
+  background-color: #f45b31;
   color: white;
   border: none;
   padding: 0.5rem 1rem;

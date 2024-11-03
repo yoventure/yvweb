@@ -34,6 +34,7 @@ const transporter = nodemailer.createTransport({
 
 let verificationCodes = {};
 let verificationAttempts = {};
+let storedImpressionCards = [];
 
 // 路由
 // app.use('/api/users', require('./routes/users'));
@@ -126,7 +127,8 @@ app.post('/api/login', async (req, res) => {
 
     const user = response.data.user;
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    // const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = password === user.password;
     if (!passwordMatch) {
       return res.status(401).json({ success: false, message: "Invalid password" });
     }
@@ -138,6 +140,117 @@ app.post('/api/login', async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 });
+
+// 路由
+app.post('/api/impression-cards', async (req, res) => {
+  const ids = req.body.ids;
+
+  if (!ids || !Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ success: false, message: "Invalid ID list" });
+  }
+
+  try {
+    // Ensure API_URL is set in your environment variables
+    if (!process.env.API_URL) {
+      throw new Error('API_URL is not defined');
+    }
+
+    // Call signup_db.py API
+    const response = await axios.post(`${process.env.API_URL}/get_impression_cards`, { ids });
+    // Ensure the response is in the expected format
+    if (!response.data) {
+      throw new Error('No data returned from API');
+    }
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching impression cards:', error.message);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
+
+app.post('/api/google-map', async (req, res) => {
+  const pois  = req.body;
+  console.log('receive the pois',pois)
+
+  try {
+    // Forward POIs to signup_db.py for processing
+    const response = await fetch(`${process.env.API_URL}/get_googlemap_POIs`, { // Adjust URL and port as needed
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ pois }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      res.json(data);
+    } else {
+      res.status(response.status).json({ error: 'Failed to fetch POIs' });
+    }
+  } catch (error) {
+    console.error('Error forwarding POIs:', error);
+    res.status(500).json({ error: 'Failed to forward POIs' });
+  }
+});
+
+app.post('/api/googleroutes', async (req, res) => {
+  const { pois, travelMode } = req.body;
+
+  console.log('Received POIs:', pois);
+
+  // 数据验证：检查 pois 是否有效
+  if (!pois || !Array.isArray(pois)) {
+    return res.status(400).json({ error: 'Invalid POIs data' });
+  }
+
+  try {
+    // 转发 POIs 到 Python 的 API
+    const response = await fetch(`${process.env.API_URL}/get_googlemap_routes`, { // Adjust URL and port as needed
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ pois: pois, travelMode: travelMode }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      res.json(data);
+    } else {
+      const errorData = await response.json();
+      res.status(response.status).json({ error: 'Failed to fetch POIs from Python API', details: errorData });
+    }
+  } catch (error) {
+    console.error('Error forwarding POIs:', error);
+    res.status(500).json({ error: 'Failed to forward POIs' });
+  }
+});
+
+
+app.post('/api/interactivewithmap', async (req, res) => {
+  const { impressionCards } = req.body;
+
+  if (!impressionCards || impressionCards.length === 0) {
+      return res.status(400).json({ error: 'No impression cards provided' });
+  }
+
+  // 处理接收到的impression cards
+  console.log('Received impression cards:', impressionCards);
+  // Save the impression cards to the mock database
+  storedImpressionCards = impressionCards;
+
+  // 可以将这些数据保存到数据库或进行其他处理逻辑
+  // 这里仅仅返回一个响应表示成功接收
+  res.status(200).json({ message: 'Impression cards received successfully' });
+});
+
+// GET endpoint to retrieve impression cards
+app.get('/api/interactivewithmap', async (req, res) => {
+  res.status(200).json({ impressionCards: storedImpressionCards });
+});
+
 
 // // 处理预检请求
 // app.options('*', cors());

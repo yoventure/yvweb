@@ -1,0 +1,224 @@
+.itinerary-container {
+  display: flex;
+  height: 100vh; /* Adjust if needed */
+}
+
+.left-side {
+  flex: 1; /* Takes up the remaining space */
+  display: flex;
+  flex-direction: column;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  flex: 3; /* Adjust if needed */
+  height: 100%; /* Full height of the right-side container */
+}
+
+.chat-itinerary-map {
+  flex: 3; /* Takes up 3/4 of the right-side height */
+  overflow: auto; /* Optional: add scroll if needed */
+}
+
+.chat-itinerary {
+  padding: 2px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 100%; /* Full height of the right-side container */
+  display: flex;
+  flex-direction: column; /* Ensure vertical stacking */
+}
+
+.itinerary-tabs {
+  display: flex;
+  padding: 1px;
+  margin: 1px;
+  height: 40px;
+}
+
+.itinerary-tabs button {
+  flex: 1; /* 让每个按钮占据容器的一半宽度 */
+  background-color: #fff1de; /* 默认背景色 */
+  color:#eea08a; /* 默认文字颜色 */
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.itinerary-tabs button.active-tab {
+  background-color: #eea08a; /* 激活时的背景色，例如紫色 */
+  color: #f45b31; /* 激活时的文字颜色 */
+  font-weight: bold;
+}
+
+.mode-toggle {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  border-color: rgb(233, 231, 231);
+  
+}
+.mode-btn {
+  border-color: rgb(233, 231, 231);
+  background-color:#fcfbfb;
+  border-width: 1px;
+}
+
+.mode-btn.active {
+  background-color:  #f45b31;
+  color: white;
+}
+
+.itinerary-tabs button {
+  background-color: #edd4d4;
+  color:  #f45b31;
+  border: None;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 4px;
+  height: 30px; 
+}
+
+.itinerary-save {
+  margin-left: 10px;
+  margin-top: 0px;
+}
+.itinerary-save #save{
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 62px;
+  height: 22px;
+  border: 1px solid #262626;
+  box-sizing: border-box;
+  border-radius: 100px;
+  box-shadow: 4px 4px 0px #030303;
+  color: white;
+  background-color: #f45b31;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+.itinerary-publish {
+  margin-left: 10px;
+  margin-top: 0px;
+}
+.itinerary-publish #publish{
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 22px;
+  border: 1px solid #262626;
+  box-sizing: border-box;
+  border-radius: 30px;
+  box-shadow: 4px 4px 0px #030303;
+  color: #f45b31;
+  background-color: white;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.travel-time #open-modal-btn{
+  background-color: white;
+  color: black;
+  border: 1px solid #7f6c6c;
+  margin-left: 30px;
+}
+
+.itinerary-content {
+  flex-grow: 1; /* Takes up remaining space */
+  overflow-y: auto; /* Enables vertical scrolling when content overflows */
+  margin: 1px;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tab-header button {
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.tab-header button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.tab-header button:hover {
+  background-color: #f0f0f0;
+}
+
+.tab-content {
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 5px;
+  min-height: 300px; /* 内容区域的最小高度 */
+}
+
+.tab-content h4 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.itinerary-day-container {
+  margin-bottom: 20px;  /* Space between days */
+}
+
+#day-poi-itinerary-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;  /* Adds spacing between POI items */
+}
+
+.poi-day-itinerary-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;  /* Light border around POI item */
+  border-radius: 10px;
+  background-color: #fff;  /* Background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Slight shadow */
+}
+
+.poi-itinerary-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  object-fit: cover;  /* Ensures the image fits properly */
+  margin-right: 15px;  /* Space between image and details */
+}
+
+.poi-day-itinerary-details {
+  display: flex;
+  flex-direction: column;  /* Ensure text content is stacked vertically */
+  flex-grow: 1;  /* Takes remaining space for details */
+}
+.poi-day-item-name {
+  margin-top: 0;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+.poi-day-item-ot {
+  margin-bottom: 0;  /* Remove any default margins for consistency */
+  color: grey;
+  font-family: 'Lucida Sans';
+  font-size: 14px;
+
+}

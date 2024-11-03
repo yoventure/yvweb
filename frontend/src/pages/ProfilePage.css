@@ -1,0 +1,79 @@
+.profile-page{
+    display: flex;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+}
+
+.profile-left{
+    width: 30%;
+    display: flex;
+    height: 100%;
+}
+
+.profile-right{
+    flex: 1;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+}
+
+.profile-basic-container{
+    margin: 2px 10px 10px -60px;
+    padding:10px 10px 10px 80px;
+    background-color: #ffffff;
+    border-radius: 40px;
+    box-shadow: 0px 8px 8px rgba(0,0,0);
+    height: 100%;
+    width: 100%;
+}
+
+.profile-more-info-container {
+    flex: 1;
+    margin: 2px 10px 10px -60px;
+    padding:10px 10px 10px 80px;
+}
+
+.profile-image-name-container {
+    margin: 20px 10px 10px 60px;
+    padding:20px 10px 10px 80px;
+    height: 20%;
+}
+
+.profile-image {
+    height: 80px;
+    width: 80px;
+}
+
+.profile-right-up{
+    display: flex;
+    height: 50%;
+    width: 100%;
+    flex-direction:row;
+}
+
+.profile-right-down{
+    display: flex;
+    flex: 1;
+    flex-direction:row;
+}
+
+.profile-section-travel-activity {
+    height: 100%;
+    width: 50%;
+}
+
+.profile-section-rate {
+    flex: 1;
+}
+
+.profile-section-footprint {
+    height: 100%;
+    width: 50%;
+}
+
+.profile-section-tags{
+    flex: 1;
+}
