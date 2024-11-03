@@ -20,5 +20,6 @@
     - directory: frontend
     - make sure you already install the node.js: node -v
     - after you install the node.js: install the dependencies which are in the package.json: npm install
+    - directory: frontend/src
     - run: npm start
    
