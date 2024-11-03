@@ -6,18 +6,21 @@ from dotenv import load_dotenv
 from bson import ObjectId  # Import ObjectId from bson
 import requests
 import googlemaps
+import os
 
 
 load_dotenv()
 
 app = Flask(__name__)
-gmaps = googlemaps.Client('AIzaSyAAMUOtHqut_xj28ddMZ-ItuxfCNTgVj6g' )
+# 使用环境变量获取 Google Maps API Key
+gmaps = googlemaps.Client(key=os.getenv('GOOGLE_MAPS_API_KEY'))
 
-COSMOS_DB_URI = "mongodb+srv://yoventure:Scienceasavocation233^^@yvmongoeast.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
-COSMOS_DB_NAME_1 = "yvuser"
-COSMOS_DB_COLLECTION_1 = "profile"
-COSMOS_DB_NAME_2 = "yvic"
-COSMOS_DB_COLLECTION_2 = "tripadvisor"
+# 使用环境变量获取 MongoDB URI 和数据库信息
+COSMOS_DB_URI = os.getenv('COSMOS_DB_URI')
+COSMOS_DB_NAME_1 = os.getenv('COSMOS_DB_NAME_1')
+COSMOS_DB_COLLECTION_1 = os.getenv('COSMOS_DB_COLLECTION_1')
+COSMOS_DB_NAME_2 = os.getenv('COSMOS_DB_NAME_2')
+COSMOS_DB_COLLECTION_2 = os.getenv('COSMOS_DB_COLLECTION_2')
 
 def get_db_client():
     try:
