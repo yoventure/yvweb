@@ -64,6 +64,8 @@ function ChatItinerary ({ session_id, impressions}) {
     const [filteredImpressionCards, setFilteredImpressionCards] = useState([]);
     const [itineraryPoiDetails, setItineraryPoiDetails] = useState([]); 
     const [itineraryData, setItineraryData] = useState(null);
+    const [isPublished, setIsPublished] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     
 
     const { activeTab, setActiveTab, activeSubTab, setActiveSubTab, showUpICs, setShowUpICs, selectedDay, setSelectedDay, showUpItineraryICs, setShowUpItineraryICs} = useItineraryInteractiveState(); // 获取 setUser 函数
@@ -596,11 +598,17 @@ function ChatItinerary ({ session_id, impressions}) {
           const data = await response.json();
           if (response.ok) {
             console.log('Itinerary saved:', data);
+            setIsPublished(true); // 显示成功提示
+            setErrorMessage('');
           } else {
             console.error('Failed to save itinerary:', data);
+            setErrorMessage(data.message || 'Failed to save itinerary');
+            setIsPublished(false); // 隐藏成功提示
           }
         } catch (error) {
           console.error('Error saving itinerary:', error);
+          setErrorMessage(error.message || 'Network error occurred');
+          setIsPublished(false); // 隐藏成功提示
         }
       };
 
@@ -688,6 +696,22 @@ function ChatItinerary ({ session_id, impressions}) {
                                     Publish
                                 </button>
                             </span>
+
+                            {/* 弹窗提示 */}
+                                {isPublished && (
+                                    <div className="popup">
+                                    <p>Itinerary has been saved successfully!</p>
+                                    <button onClick={() => setIsPublished(false)}>Close</button>
+                                    </div>
+                                )}
+
+                                {errorMessage && (
+                                    <div className="error-popup">
+                                    <p>Error: {errorMessage}</p>
+                                    <button onClick={() => setErrorMessage('')}>Close</button>
+                                    </div>
+                                )}
+
                             <div id="travel-time-modal"></div>
                             <div id="modal-overlay" class="modal-overlay hidden"></div>
                         </div>

@@ -8,27 +8,38 @@ function Home() {
         <p id='p1'>YoVenture</p>
         <p id='p2' class="repeat">Travel Facilitator: Match, Plan, Avoid, Monetize</p>
       </div>
-      <div id = 'functions'>
-        <h1 id='HW'>How It Works</h1>
-        <div id='HW-Chat'>
-          <h2 id='HW-Chat-Assistant-h2'>AI Travel Assistant</h2>
-          <p id='HW-Chat-Assistant-p'>Assists users to generate itineraries by discussing, picturing, and videos.</p>
-          <span id='HW-Chat-Assistant-image'></span>
+      <div id="functions">
+        <h1 id="HW">How It Works</h1>  
+        <div class="feature" id="HW-Chat">
+          <div class="feature-text">
+          <h2>AI Travel Assistant</h2>
+          <p>Assists users to generate itineraries by discussing, picturing, and videos.</p>
+          </div>
+          <span class="feature-image" id="HW-Chat-Assistant-image"></span>
         </div>
-        <div id='HW-Match'>
-          <span id='HW-Match-Assistant-image'></span>
-          <h2 id='HW-Match-Assistant-h2'>Enhanced Matching</h2>
-          <p id='HW-Match-Assistant-p'>Connects locals, tourists and travel buddies easily.</p>
+
+        <div class="feature" id="HW-Match">
+          <span class="feature-image" id="HW-Match-Assistant-image"></span>
+          <div class="feature-text">
+          <h2>Enhanced Matching</h2>
+          <p>Connects locals, tourists and travel buddies easily.</p>
+          </div>
         </div>
-        <div id='HW-Pitfall'>
-          <h2 id='HW-Pitfall-Assistant-h2'>Avoid Pitfalls</h2>
-          <p id='HW-Pitfall-Assistant-p'>Improves user engagement and help users avoid pitfalls.</p>
-          <span id='HW-Pitfall-Assistant-image'></span>
+
+        <div class="feature" id="HW-Pitfall">
+          <div class="feature-text">
+          <h2>Avoid Pitfalls</h2>
+          <p>Improves user engagement and help users avoid pitfalls.</p>
+          </div>
+          <span class="feature-image" id="HW-Pitfall-Assistant-image"></span>
         </div>
-        <div id='HW-Explorer'>
-          <span id='HW-Explorer-Assistant-image'></span>
-          <h2 id='HW-Explorer-Assistant-h2'>Enthusiasts Becoming Explorer</h2>
-          <p id='HW-Explorer-Assistant-p'>Travel lovers could become professional planners.</p>
+
+        <div class="feature" id="HW-Explorer">
+          <span class="feature-image" id="HW-Explorer-Assistant-image"></span>
+          <div class="feature-text">
+          <h2>Enthusiasts Becoming Explorer</h2>
+          <p>Travel lovers could become professional planners.</p>
+          </div>
         </div>
       </div>
       <div class='footer-container'>

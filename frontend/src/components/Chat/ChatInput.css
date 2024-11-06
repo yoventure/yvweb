@@ -1,6 +1,28 @@
+/* chat-input-wrapper 样式，用于整体布局 */
+.chat-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Match 按钮样式 */
+.match-button {
+  padding: 10px;
+  background-color: #f8f7f6;
+  color: #eea08a;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.match-button:hover {
+  background-color: #eea08a;
+}
 .chat-input {
   display: flex;
   padding: 10px;
+  flex: 1;
+  gap: 5px;
   border-top: 1px solid #ccc;
 }
 
@@ -23,4 +45,54 @@
 
 .chat-input button:hover {
   background-color: #eea08a;
+}
+
+.chat-input-wrapper .modal {
+  position: fixed;
+  top: 200px;
+  left: 800px;
+  width: 40%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.chat-input-wrapper .modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.modal-content p {
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background: #0056b3;
+}
+
+/* 头像样式 */
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* 圆形头像 */
+  margin: 10px auto;
+  display: block;
+  object-fit: cover; /* 确保图片按比例填充 */
+  border: 2px solid #ccc; /* 添加边框 */
 }
