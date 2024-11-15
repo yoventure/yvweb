@@ -100,19 +100,19 @@
 
 /* Individual background images */
 #HW-Chat-Assistant-image {
-  background-image: url("../../public/HW_Chat_Assistant.gif");
+  background-image: url("../../public/step1.gif");
 }
 
 #HW-Match-Assistant-image {
-  background-image: url("../../public/HW_Match_Assistant.gif");
+  background-image: url("../../public/step2.gif");
 }
 
 #HW-Pitfall-Assistant-image {
-  background-image: url("../../public/HW_Pitfall_Assistant.gif");
+  background-image: url("../../public/step3.gif");
 }
 
 #HW-Explorer-Assistant-image {
-  background-image: url("../../public/HW_Explorer_Assistant.gif");
+  background-image: url("../../public/step4.gif");
 }
 
 .footer-container {
@@ -171,4 +171,14 @@ li {
   margin: 0;
   padding: 0;
   width: 100px
+}
+
+.h2-step1, .p-step1, .h2-step3, .p-step3 {
+  text-align: left; /* Left-align Step1 and Step3 */
+  align-self: flex-start;
+}
+
+.h2-step2, .p-step2, .h2-step4, .p-step4 {
+  text-align: right; /* Right-align Step2 and Step4 */
+  align-self: flex-end;
 }

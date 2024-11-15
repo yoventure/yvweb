@@ -11,19 +11,22 @@ function MemberList() {
     const [members, setMembers] = useState([]);
   
     useEffect(() => {
-      // Fetch members data from the API or a predefined list
       const fetchMembers = async () => {
         try {
-          const response = await fetch(`${Url}/members`);
+          const response = await fetch(`${Url}/get-members`);
+          if (!response.ok) {
+            throw new Error('Failed to fetch members');
+          }
           const data = await response.json();
-          setMembers(data); // Assuming data is an array of member objects
+          setMembers(data); // Update state with the fetched members
+          console.log(members)
         } catch (error) {
           console.error('Error fetching members:', error);
         }
       };
   
       fetchMembers();
-    }, []);
+    }, []); // Fetch members on component mount
   
     return (
       <div className="member-container">
@@ -35,7 +38,8 @@ function MemberList() {
         <div className="online-members">
           {members.filter(member => member.online).map((member, index) => (
             <div key={index} className="member">
-              <img src={member.avatarUrl} alt={member.name} className="member-avatar" />
+              <img src={member.imageUrl} alt={member.name} className="member-avatar" />
+              <p className="member-name">{member.name}</p>
             </div>
           ))}
         </div>
@@ -56,12 +60,19 @@ function MemberList() {
         <div className="all-messages">
           {members.map((member, index) => (
             <div key={index} className="message">
-              <span>{member.name}</span>
-              <span className="message-content">{member.message}</span>
-              <span className="message-time">{member.messageTime}</span>
+              <img src={member.imageUrl} alt={member.name} className="member-avatar" />
+              <div className="message-details">
+                <div className="member-name">{member.name}</div>
+                <div className="message-content">{member.message}</div>
+              </div>
+              <div className="message-meta">
+                <span className="message-time">{member.messageTime}</span>
+                {member.muted && <i className="mute-icon">🔇</i>}
+              </div>
             </div>
           ))}
         </div>
+
       </div>
     );
   }

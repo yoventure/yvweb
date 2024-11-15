@@ -8,7 +8,7 @@ import { useItineraryInteractiveState } from '../../ItineraryInteractiveContext'
 
 const Url = config.apiUrl;
 
-const googleMapsApiKey = 'AIzaSyAAMUOtHqut_xj28ddMZ-ItuxfCNTgVj6g'; // Replace with your actual API key
+const googleMapsApiKey = 'AIzaSyCJOimDLfBvOvHKfZLTaeC1oxjBQNDT0Po'; // Replace with your actual API key
 const containerStyle = {
   width: '100%',
   height: '400px',

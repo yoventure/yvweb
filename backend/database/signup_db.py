@@ -13,7 +13,7 @@ load_dotenv()
 
 app = Flask(__name__)
 # 使用环境变量获取 Google Maps API Key
-gmaps = googlemaps.Client(key=os.getenv('GOOGLE_MAPS_API_KEY'))
+gmaps = googlemaps.Client(key='AIzaSyCJOimDLfBvOvHKfZLTaeC1oxjBQNDT0Po')
 
 # 使用环境变量获取 MongoDB URI 和数据库信息
 COSMOS_DB_URI = os.getenv('COSMOS_DB_URI')
@@ -161,7 +161,7 @@ def get_poi_coordinates(address, api_key):
 def get_googlemap_POIs():
     data = request.json
     print(data)
-    api_key = 'AIzaSyAAMUOtHqut_xj28ddMZ-ItuxfCNTgVj6g'  # 替换为你的实际API密钥
+    api_key = 'AIzaSyCJOimDLfBvOvHKfZLTaeC1oxjBQNDT0Po'  # 替换为你的实际API密钥
     # 遍历传入的每个城市和 POI 列表
     results = []
     for city_info in data['pois']['data']:

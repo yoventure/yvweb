@@ -9,7 +9,7 @@ import { initializeTravelTimeModal, openModal } from './travel-time'
 
 const Url = config.apiUrl;
 
-const googleMapsApiKey = 'AIzaSyAAMUOtHqut_xj28ddMZ-ItuxfCNTgVj6g'; // Replace with your actual API key
+const googleMapsApiKey = 'AIzaSyCJOimDLfBvOvHKfZLTaeC1oxjBQNDT0Po'; // Replace with your actual API key
 const containerStyle = {
   width: '100%',
   height: '400px',
@@ -18,24 +18,7 @@ const containerStyle = {
 const center = {
   lat: 37.7749, // Default center of the map
   lng: -122.4194,
-};
-
-// function getFormattedDuration(duration) {
-//     console.log('什么duration啊',duration)
-//     const [startTime, endTime] = duration.split('-');
-//     const start = new Date(`1970-01-01T${startTime}:00`);
-//     const end = new Date(`1970-01-01T${endTime}:00`);
-//     const diffMs = end - start;
-//     const diffHours = diffMs / (1000 * 60 * 60);
-  
-//     if (diffHours < 1) {
-//       return `around ${Math.round(diffHours * 60)} min`;
-//     } else if (diffHours === 1) {
-//       return 'around 1 hr';
-//     } else {
-//       return `around ${Math.round(diffHours)} hrs`;
-//     }
-//   }      
+};    
 
 function ChatItinerary ({ session_id, impressions}) {
     const [sessions, setSessions] = useState([]);

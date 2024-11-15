@@ -12,6 +12,9 @@ const bcrypt = require('bcryptjs');
 const app = express();
 const port = process.env.PORT || 5001;
 
+const fs = require('fs');
+const path = require('path');
+
 
 
 // 中间件
@@ -35,14 +38,6 @@ const transporter = nodemailer.createTransport({
 let verificationCodes = {};
 let verificationAttempts = {};
 let storedImpressionCards = [];
-
-// 路由
-// app.use('/api/users', require('./routes/users'));
-// app.use('/api/chats', require('./routes/chats'));
-// app.use('/api/planners', require('./routes/planners'));
-// // 引入并使用新的路由
-// const signupRouter = require('./routes/signup');
-// app.use('/api', signupRouter);
 
 // Routes
 app.post('/api/send-verification', (req, res) => {
@@ -249,6 +244,56 @@ app.post('/api/interactivewithmap', async (req, res) => {
 // GET endpoint to retrieve impression cards
 app.get('/api/interactivewithmap', async (req, res) => {
   res.status(200).json({ impressionCards: storedImpressionCards });
+});
+
+app.post('/api/save-interested-members', async (req, res) => {
+  try {
+    const { interestedProfiles } = req.body;
+
+    // Define the file path
+    const filePath = path.join(__dirname, 'interestedProfiles.txt');
+
+    // Convert profiles to a string
+    const dataToWrite = interestedProfiles
+      .map((profile) => JSON.stringify(profile))
+      .join('\n');
+
+    // Append the data to the file (creates the file if it doesn't exist)
+    fs.appendFile(filePath, `${dataToWrite}\n`, (err) => {
+      if (err) {
+        console.error('Error writing to file:', err);
+        res.status(500).json({ message: 'Failed to save profiles' });
+      } else {
+        res.status(200).json({ message: 'Profiles saved successfully' });
+      }
+    });
+  } catch (error) {
+    console.error('Error processing request:', error);
+    res.status(500).json({ message: 'Failed to process request' });
+  }
+});
+
+app.get('/api/get-members', async (req, res) => {
+  try {
+    const filePath = path.join(__dirname, 'interestedProfiles.txt');
+
+    // Read the file
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error reading file:', err);
+        res.status(500).json({ message: 'Failed to read profiles' });
+      } else {
+        const profiles = data
+          .split('\n') // Split by newline
+          .filter((line) => line.trim() !== '') // Remove empty lines
+          .map((line) => JSON.parse(line)); // Parse JSON strings
+        res.status(200).json(profiles);
+      }
+    });
+  } catch (error) {
+    console.error('Error processing request:', error);
+    res.status(500).json({ message: 'Failed to process request' });
+  }
 });
 
 

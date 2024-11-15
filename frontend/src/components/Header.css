@@ -70,3 +70,20 @@
 .nav-right .button.primary:hover {
   background-color: #f45b31;
 }
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #eea08a;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #d6755c;
+}

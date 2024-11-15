@@ -13,6 +13,7 @@ const DiscussPage = () => {
     { id: 4, content: 'I like this idea', time: '07:49 AM', isPinned: false, sender: 'Jenifer' },
     // Add more messages as needed
   ]);
+  const [members, setMembers] = useState([]);
 
   const [newMessage, setNewMessage] = useState('');
 
@@ -23,10 +24,14 @@ const DiscussPage = () => {
     }
   };
 
+  const addToMemberList = (newMembers) => {
+    setMembers((prevMembers) => [...prevMembers, ...newMembers]);
+  };
+
   return (
     <div className="discuss-interface">
         <div className="member-list">
-            <MemberList></MemberList>
+        <MemberList initialMembers={members} />
         </div>
         <div className="discuss-container">
             <GroupDiscuss></GroupDiscuss>

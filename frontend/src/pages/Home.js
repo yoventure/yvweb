@@ -12,8 +12,8 @@ function Home() {
         <h1 id="HW">How It Works</h1>  
         <div class="feature" id="HW-Chat">
           <div class="feature-text">
-          <h2>AI Travel Assistant</h2>
-          <p>Assists users to generate itineraries by discussing, picturing, and videos.</p>
+          <h2 className='h2-step1'>Step1 - Set Notifications</h2>
+          <p className='p-step1'>Set your preferences for travel alerts based on your interests, schedule, and style. Let YoVenture curate the perfect insights just for you.</p>
           </div>
           <span class="feature-image" id="HW-Chat-Assistant-image"></span>
         </div>
@@ -21,15 +21,15 @@ function Home() {
         <div class="feature" id="HW-Match">
           <span class="feature-image" id="HW-Match-Assistant-image"></span>
           <div class="feature-text">
-          <h2>Enhanced Matching</h2>
-          <p>Connects locals, tourists and travel buddies easily.</p>
+          <h2 className='h2-step2'>Step2 - Smart Alerts</h2>
+          <p className='p-step2'>Get timely notifications that wake you up to exciting opportunities—exclusive deals, hidden gems, and seasonal highlights tailored to your travel dreams.</p>
           </div>
         </div>
 
         <div class="feature" id="HW-Pitfall">
           <div class="feature-text">
-          <h2>Avoid Pitfalls</h2>
-          <p>Improves user engagement and help users avoid pitfalls.</p>
+          <h2 className='h2-step3'>Step3 - Curated Insights</h2>
+          <p className='p-step3'>Browse a concise, curated newsletter showcasing the latest discoveries and ideas to spark your wanderlust.</p>
           </div>
           <span class="feature-image" id="HW-Pitfall-Assistant-image"></span>
         </div>
@@ -37,8 +37,8 @@ function Home() {
         <div class="feature" id="HW-Explorer">
           <span class="feature-image" id="HW-Explorer-Assistant-image"></span>
           <div class="feature-text">
-          <h2>Enthusiasts Becoming Explorer</h2>
-          <p>Travel lovers could become professional planners.</p>
+          <h2 className='h2-step4'>Step4 - AI Itineraries</h2>
+          <p className='p-step4'>Dive into an AI-crafted, stylish itinerary built from your selected insights. Customize and refine your plans directly in the app to make them uniquely yours.</p>
           </div>
         </div>
       </div>

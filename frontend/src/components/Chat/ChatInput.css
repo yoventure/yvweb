@@ -49,50 +49,248 @@
 
 .chat-input-wrapper .modal {
   position: fixed;
-  top: 200px;
-  left: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 40%;
-  height: 50%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.95);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .chat-input-wrapper .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 20px 30px;
+  width: 100%;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
 }
 
+
+/* Profile card in modal */
+.modal-card-select{
+  display: flex;
+  align-items: center; /* Center align arrows and content vertically */
+  justify-content: center; /* Ensure everything is centered */
+  gap: 20px; /* Space between buttons and profile card */
+  margin: 20px 0;
+}
+.profile-mini-card{
+  width: 90%;
+  align-items: center;
+  background-color:#fff1de;
+}
+.modal-card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Circle size */
+  height: 40px;
+  background-color: #f8f7f6;
+  border: 2px solid #eea08a;
+  border-radius: 50%; /* Make it circular */
+  font-size: 20px; /* Arrow size */
+  color: #eea08a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-card-arrow:hover {
+  background-color: #eea08a;
+  color: #fff;
+  border-color: #eea08a;
+}
+
+.modal-card-prev-button {
+  margin-right: 20px;
+}
+
+.modal-card-next-button {
+  margin-left: 20px;
+}
+.modal-content h3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #333;
+}
 
 .modal-content p {
-  margin-bottom: 20px;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
 
-.modal-content button {
-  padding: 10px 20px;
-  border: none;
-  background: #007bff;
+.modal-content strong {
+  color: #333;
+}
+
+.modal-content .modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-content .modal-actions button {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #f8f7f6;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-content .modal-actions button:hover {
+  background-color: #eea08a;
   color: white;
-  border-radius: 5px;
+}
+
+/* Interested button styles */
+.modal-content .interested-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: none;
+  border: 1px solid #eea08a;
+  color: #eea08a;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.modal-content .interested-button.interested {
+  background-color: #eea08a;
+  color: white;
+}
+
+.modal-content .interested-button:hover {
+  background-color: #d6755c;
+  color: white;
+}
+
+/* Done button */
+.modal-done {
+  padding: 12px 20px;
+  background-color: #eea08a;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-done:hover {
+  background-color: #d6755c;
+}
+
+/* Profile avatar styles */
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Circular avatar */
+  margin: 15px auto;
+  display: block;
+  object-fit: cover;
+  border: 3px solid #ccc; /* Border for better visibility */
+}
+
+/* Left/Right navigation buttons */
+.modal-content .navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.navigation-buttons button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: #eea08a;
   cursor: pointer;
 }
 
-.modal-content button:hover {
-  background: #0056b3;
+.navigation-buttons button:hover {
+  color: #d6755c;
 }
 
-/* 头像样式 */
-.profile-avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%; /* 圆形头像 */
-  margin: 10px auto;
-  display: block;
-  object-fit: cover; /* 确保图片按比例填充 */
-  border: 2px solid #ccc; /* 添加边框 */
+/* Profile card container */
+.profile-mini-card {
+  text-align: left;
+  max-width: 300px; /* Adjust width as needed */
+  margin: 0 auto;
+}
+
+/* Name styling */
+.profile-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Introduction styling */
+.profile-introduction {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify; /* Justified alignment */
+}
+
+/* Specialty and Interested container */
+.profile-specialty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 10px; /* Adds spacing between Specialty text and button */
+}
+
+/* Specialty text */
+.profile-specialty p {
+  font-size: 14px;
+  color: #555;
+  margin: 0; /* Remove extra spacing */
+}
+
+/* Interested button styles */
+.interested-button {
+  padding: 8px 15px;
+  border: 2px solid #eea08a;
+  border-radius: 25px;
+  background-color: #f8f7f6;
+  color: #eea08a;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.interested-button:hover {
+  background-color: #eea08a;
+  color: white;
+}
+
+.interested-button.interested {
+  background-color: #eea08a;
+  color: white;
+  border-color: #d6755c;
 }

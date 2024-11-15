@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import './ChatInput.css';
+import config from '../../config'; // 引入 config.js
 
-function ChatInput({ sendMessage }) {
+const Url = config.apiUrl;
+
+function ChatInput({ sendMessage,  addToMemberList}) {
   const [input, setInput] = useState('');
   const [matchModalVisible, setMatchModalVisible] = useState(false);
-  const [matchResult, setMatchResult] = useState('');
+  const [currentProfileIndex, setCurrentProfileIndex] = useState(0);
+  const [interestedProfiles, setInterestedProfiles] = useState([]);
 
   const handleSend = () => {
     if (input.trim()) {
@@ -53,11 +57,50 @@ function ChatInput({ sendMessage }) {
   ];
 
   const handleMatch = () => {
-    // 模拟匹配结果
-    const matchedProfile = profiles[Math.floor(Math.random() * profiles.length)];
-    console.log(matchedProfile);
-    setMatchResult(matchedProfile);
     setMatchModalVisible(true);
+  };
+
+  const handleNextProfile = () => {
+    setCurrentProfileIndex((prev) => (prev + 1) % profiles.length);
+  };
+
+  const handlePreviousProfile = () => {
+    setCurrentProfileIndex((prev) => (prev - 1 + profiles.length) % profiles.length);
+  };
+
+  const handleInterested = (index) => {
+    const selectedProfile = profiles[index];
+    if (interestedProfiles.some((profile) => profile.name === selectedProfile.name)) {
+      // Remove if already interested
+      setInterestedProfiles(interestedProfiles.filter((profile) => profile.name !== selectedProfile.name));
+    } else {
+      // Add if marked interested
+      setInterestedProfiles([...interestedProfiles, selectedProfile]);
+    }
+  };
+
+  const handleDone = async () => {
+    try {
+      // Send interestedProfiles to the API
+      const response = await fetch(`${Url}/save-interested-members`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ interestedProfiles }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to save interested profiles');
+      }
+  
+      // Reset state and close modal
+      setMatchModalVisible(false);
+      setCurrentProfileIndex(0);
+      setInterestedProfiles([]);
+    } catch (error) {
+      console.error('Error saving interested profiles:', error);
+    }
   };
 
   return (
@@ -79,25 +122,66 @@ function ChatInput({ sendMessage }) {
       </div>
 
       {/* 匹配弹窗 */}
-      {matchModalVisible && matchResult && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>You have been matched with:</h3>
-            {/* 用户头像 */}
-            <img
-              src={matchResult.imageUrl}
-              alt={matchResult.name}
-              className="profile-avatar"
-            />
-            {/* 用户信息 */}
-            <p><strong>{matchResult.name}</strong></p>
-            {/* <p><em>{matchResult.avatar}</em></p> */}
-            <p>{matchResult.introduction}</p>
-            <p><strong>Specialty:</strong> {matchResult.Specialty}</p>
-            <button onClick={() => setMatchModalVisible(false)}>Close</button>
+      {matchModalVisible && (
+      <div className="modal">
+        <div className="modal-content">
+          {/* Close button in the top-right corner */}
+          <button className="modal-close" onClick={() => setMatchModalVisible(false)}>
+            &times;
+          </button>
+
+          <h3>You have been matched with:</h3>
+          <div className="modal-card-select">
+            <button
+              className="modal-card-arrow modal-card-prev-button"
+              onClick={handlePreviousProfile}
+            >
+              &#8249; {/* Left arrow symbol */}
+            </button>
+            <div className="profile-mini-card">
+              <img
+                src={profiles[currentProfileIndex].imageUrl}
+                alt={profiles[currentProfileIndex].name}
+                className="profile-avatar"
+              />
+              <h3 className="profile-name">{profiles[currentProfileIndex].name}</h3>
+            <p className="profile-introduction">{profiles[currentProfileIndex].introduction}</p>
+            <div className="profile-specialty">
+              <p>
+                <strong>Specialty:</strong> {profiles[currentProfileIndex].Specialty}
+              </p>
+              <button
+                  className={`interested-button ${
+                    interestedProfiles.some(
+                      (profile) => profile.name === profiles[currentProfileIndex].name
+                    )
+                      ? 'interested'
+                      : ''
+                  }`}
+                  onClick={() => handleInterested(currentProfileIndex)}
+                >
+                  {interestedProfiles.some(
+                    (profile) => profile.name === profiles[currentProfileIndex].name
+                  )
+                    ? '✔ Interested'
+                    : 'Interested'}
+                </button>
+            </div>
+            </div>
+            <button
+              className="modal-card-arrow modal-card-next-button"
+              onClick={handleNextProfile}
+            >
+              &#8250;
+            </button>
           </div>
+          <button className="modal-done" onClick={handleDone}>
+            Done
+          </button>
         </div>
-      )}
+      </div>
+    )}
+
     </div>
   );
 }
